@@ -28,7 +28,6 @@ public class World
 
     public World( String path )
     {
-        scale = 25;
         height = 0;
         StringBuilder input = new StringBuilder();
         try
@@ -40,6 +39,7 @@ public class World
                 height++;
             }
             width = input.length() / height;
+            scale = 500 / Math.max(width, height);
             scanner.close();
         }
         catch ( FileNotFoundException e )
@@ -59,18 +59,18 @@ public class World
                         * scale + scale / 2 );
                     switch ( input.charAt( x + y * width ) )
                     {
-                        case 'S':
+                        case 'P':
                             newspace.setType( PATH );
                             start = newspace;
                             break;
-                        case 'E':
+                        case '.':
                             newspace.setType( PATH );
                             end = newspace;
                             break;
-                        case 'P':
+                        case ' ':
                             newspace.setType( PATH );
                             break;
-                        case '.':
+                        case '%':
                             newspace.setType( GRASS );
                             break;
                     }

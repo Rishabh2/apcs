@@ -1,8 +1,18 @@
 package towerdefense;
 
-public interface Tower
+
+public abstract class Tower
 {
-    public void draw();
+    private int x;
+
+    private int y;
+
+
+    public void draw( int size )
+    {
+        Window.out.color( "green" );
+        Window.out.circle( x, y, size );
+    }
 
     // TODO: Add more methods
 }
